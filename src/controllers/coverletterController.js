@@ -1,7 +1,7 @@
 const { generateDocument } = require("../services/openaiService");
 const { fetchCompanyContent } = require("../utils/fetchCompanyUrl");
 
-const generateResume = async (req, res, next) => {
+const generateCoverletter = async (req, res, next) => {
   try {
     const {
       resumeInput,
@@ -24,7 +24,7 @@ const generateResume = async (req, res, next) => {
     }
 
     // Pass companyAboutContent into the prompt engine
-    const content = await generateDocument("resume", {
+    const content = await generateDocument("coverLetter", {
       resumeInput,
       jobDescription,
       companyContent, // ✅ replaces raw URL
@@ -36,9 +36,9 @@ const generateResume = async (req, res, next) => {
 
     res.status(200).json({ success: true, content });
   } catch (error) {
-    console.error("Resume generation failed:", error);
+    console.error("Cover letter generation failed:", error);
     next(error);
   }
 };
 
-module.exports = { generateResume };
+module.exports = { generateCoverletter };
