@@ -22,10 +22,10 @@ The cover letter should:
 - Highlight relevant experience, values alignment, and interest in the company
 - Reference specific aspects of the job and company culture if available
 - Use keywords found in the ${jobDescription}. 
-
+- Do not make up any experience, skills, or credentials. Use only the information the candidate has provided. If something is missing, leave it out or generalize appropriately.
 ${context}
 
-Write the letter in a way that stands out, feels human, and ends with a clear, respectful call to action.`;
+Write the letter with out fabrication in a way that stands out, feels human, and ends with a clear, respectful call to action.`;
 };
 
 module.exports = { buildCoverLetterPrompt };
