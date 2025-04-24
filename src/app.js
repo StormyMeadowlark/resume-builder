@@ -4,7 +4,8 @@ const cors = require("cors");
 // Routes
 const resumeRoutes = require("./routes/resumeRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
-const coverletterRoutes = require("./routes/coverletterRoutes")
+const coverletterRoutes = require("./routes/coverletterRoutes");
+const jobDescrptionRoutes = require("./routes/jobDescriptionRoutes");
 
 const app = express();
 
@@ -23,5 +24,7 @@ app.use("/api/resume", resumeRoutes);
 app.use("/api/upload-resume", uploadRoutes)
 
 app.use("/api/coverletter", coverletterRoutes)
+
+app.use("/api/job-description", jobDescrptionRoutes)
 
 module.exports = app;

@@ -4,6 +4,7 @@ const config = require("../config");
 // Import prompt builders
 const { buildResumePrompt } = require("../prompts/resumePrompt");
 const { buildCoverLetterPrompt } = require("../prompts/coverletterPrompt");
+const { buildJobDescriptionPrompt } = require("../prompts/jobDescriptionPrompt")
 
 const openai = new OpenAI({ apiKey: config.OPENAI_API_KEY });
 
@@ -17,11 +18,25 @@ const generateDocument = async (type, payload) => {
     case "coverLetter":
       prompt = buildCoverLetterPrompt(payload);
       break;
+    case "jobDescription":
+      prompt = buildJobDescriptionPrompt(payload);
+      break;
     default:
       throw new Error(`Unsupported document type: ${type}`);
   }
 
-  const systemPrompt = `You are an expert ${type === "resume" ? "resume builder" : "cover letter writer"} for the ${industry} industry.`;
+  const systemPrompt = (() => {
+    switch (type) {
+      case "resume":
+        return `You are an expert resume builder for the ${industry} industry.`;
+      case "coverLetter":
+        return `You are an expert cover letter writer for the ${industry} industry.`;
+      case "jobDescription":
+        return `You are a seasoned HR and recruiting professional with expertise in writing compelling, platform-optimized job descriptions tailored for the ${industry} industry.`;
+      default:
+        return `You are a helpful assistant with expertise in the ${industry} industry.`;
+    }
+  })();
 
   const response = await openai.chat.completions.create({
     model: "gpt-4",

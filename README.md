@@ -71,10 +71,10 @@ This tool is not just functional—it is strategic:
 ## ✅ Roadmap
 
 ### Phase 1: Internal MVP
-- [ ] Resume + cover letter generator
-- [ ] Job post generator
+- [X] Resume + cover letter generator
+- [X] Job post generator
 - [ ] Export to PDF
-- [ ] Manual input or resume upload
+- [X] Manual input or resume upload
 - [ ] Basic form UI
 
 ### Phase 2: Lead Magnet Version
